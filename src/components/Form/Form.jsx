@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { addContact } from 'redux/contacts.reducer';
 import { FormStyle } from './Form.styled';
-
+//
 export const Form = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contactsStore.contacts);
