@@ -11,7 +11,7 @@ export const ContactListItem = ({ contact }) => {
   return (
     <ContactItem>
       <span>{contact.name}: </span>
-      <span>{contact.number}</span>
+      <span>{contact.phone}</span>
       <ButtonDelete
         type="button"
         onClick={() => handleDeleteContact(contact.id)}

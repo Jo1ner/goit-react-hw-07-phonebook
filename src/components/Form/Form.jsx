@@ -3,10 +3,11 @@ import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { addContact } from 'redux/contacts.reducer';
 import { FormStyle } from './Form.styled';
-//
+
 export const Form = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contactsStore.contacts);
+  const contacts = useSelector(state => state.contacts.contacts.items);
+  console.log('contactsInForm: ', contacts);
 
   const createContact = formData => {
     if (contacts.some(contact => contact.name === formData.name)) {
@@ -22,18 +23,18 @@ export const Form = () => {
   };
 
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
 
   const handleSubmit = evt => {
     evt.preventDefault();
 
     const formData = {
       name: name,
-      number: number,
+      phone: phone,
     };
     createContact(formData);
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   const handleInputChange = evt => {
@@ -42,7 +43,7 @@ export const Form = () => {
     if (name === 'name') {
       setName(value);
     } else if (name === 'number') {
-      setNumber(value);
+      setPhone(value);
     }
   };
 
@@ -60,11 +61,11 @@ export const Form = () => {
           />
         </label>
         <label>
-          <p>Number</p>
+          <p>Phone</p>
           <input
             type="tel"
             name="number"
-            value={number}
+            value={phone}
             onChange={handleInputChange}
             pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
             placeholder="XXX-XX-XX"
