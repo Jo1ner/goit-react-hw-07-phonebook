@@ -3,10 +3,11 @@ import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { addContact } from 'redux/contacts.reducer';
 import { FormStyle } from './Form.styled';
+import { selectContacts } from 'redux/contacts.selectors';
 
 export const Form = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.contacts.items);
+  const contacts = useSelector(selectContacts);
   console.log('contactsInForm: ', contacts);
 
   const createContact = formData => {
